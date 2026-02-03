@@ -1,65 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vineet Kumar Gupta - Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Vineet Kumar Gupta | Gen-AI Engineer @ Goldman Sachs</title>
+    <meta name="description"
+        content="Explore Vineet Kumar Gupta's interactive 3D resume - Gen-AI Engineer at Goldman Sachs, building AI platforms serving 50,000+ users.">
+    <meta name="keywords"
+        content="Vineet Kumar Gupta, Resume, Portfolio, Goldman Sachs, Gen-AI, LLM, Software Engineer">
+    <meta name="author" content="Vineet Kumar Gupta">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <header>
-        <div class="container">
-            <h1>Vineet Kumar Gupta</h1>
-            <p>Software Engineer | Tech Enthusiast</p>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader-content">
+            <div class="loader-avatar">
+                <div class="avatar-glow"></div>
+                <div class="avatar-body"></div>
+            </div>
+            <h1 class="loader-title">VINEET KUMAR GUPTA</h1>
+            <p class="loader-subtitle">Gen-AI Engineer @ Goldman Sachs</p>
+            <div class="loader-bar">
+                <div class="loader-progress" id="loader-progress"></div>
+            </div>
+            <p class="loader-tip">🎮 Use WASD or Arrow Keys to explore my world</p>
         </div>
-    </header>
-    <main>
-        <section id="bio">
-            <div class="container">
-                <h2>About Me</h2>
-                <p>
-                    I’m Vineet, a passionate software engineer driven by curiosity and a love for technology. From exploring new programming languages to diving into the latest tech trends, I’m always eager to learn and innovate. When I’m not coding, you might find me indulging in my hobbies like playing chess, experimenting with DIY electronics, or hiking in nature. My journey through technology has been fueled by a desire to solve real-world problems and build solutions that make a difference. Join me as I continue to explore the limitless possibilities of the tech world!
-                </p>
-            </div>
-        </section>
-        <section id="resume">
-            <div class="container">
-                <h2>Resume</h2>
-                <p><strong>Email:</strong> vk779756@gmail.com</p>
-                <p><strong>Phone:</strong> +91-9598035666</p>
-                <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/vineet-kumar-gupta/">vineet-kumar-gupta</a></p>
-                <p><strong>Education:</strong> Vellore Institute of Technology, BTech (CSE), CGPA 9.12</p>
-                <p><strong>Skills:</strong> Python, C/C++, Django, Flask, AWS, Azure, Postgres, AWS-CLI, UNIX, Docker, Terraform, Web Scraping, GIT, CircleCi, Snowflake, SQL</p>
-                <p><strong>Work Experience:</strong> Product Engineer at Squadstack (July 2023 – April 2024)</p>
-                <p><strong>Achievements:</strong> Winner of INSTINCT 2.0 Innovation Challenge & Hackathon, Google Hash code 2021 (AIR 1286)</p>
-                <p><strong>Projects:</strong> Squad-Gunicorn, Secure Smart Electric Meter & Network</p>
-            </div>
-        </section>
-        <section id="chat">
-            <div class="container">
-                <h2>Ask Me Anything</h2>
-                <div id="chatbox">
-                    <select id="questionSelect" onchange="handleDropdownChange()">
-                        <option value="">Select a Question</option>
-                        <option value="who are you">Who are you?</option>
-                        <option value="what is your email">What is your email?</option>
-                        <option value="what is your phone number">What is your phone number?</option>
-                        <option value="where did you study">Where did you study?</option>
-                        <option value="what are your skills">What are your skills?</option>
-                        <option value="what is your work experience">What is your work experience?</option>
-                        <option value="what are your achievements">What are your achievements?</option>
-                        <option value="what projects have you worked on">What projects have you worked on?</option>
-                    </select>
-                    <div id="chatlog"></div>
+    </div>
+
+    <!-- Main Canvas -->
+    <canvas id="game-canvas"></canvas>
+
+    <!-- UI Overlay -->
+    <div id="ui-overlay">
+        <!-- Header with Profile -->
+        <header id="header">
+            <div class="header-left">
+                <div class="profile-badge">
+                    <div class="profile-avatar">VK</div>
+                    <div class="profile-info">
+                        <span class="header-name">VINEET KUMAR GUPTA</span>
+                        <span class="header-role">Gen-AI Engineer @ Goldman Sachs</span>
+                    </div>
                 </div>
             </div>
-        </section>
-    </main>
-    <footer>
-        <div class="container">
-            <p>© 2024 Vineet Kumar Gupta. All rights reserved.</p>
+            <div class="header-right">
+                <div class="stats-bar">
+                    <div class="stat-item">
+                        <span class="stat-value">50K+</span>
+                        <span class="stat-label">Users</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">2+</span>
+                        <span class="stat-label">Years</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">90%</span>
+                        <span class="stat-label">Cost Saved</span>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/vineetkumar0" target="_blank" class="social-link" title="GitHub">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com/in/vineet-kumar-gupta/" target="_blank" class="social-link"
+                        title="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg>
+                    </a>
+                    <a href="mailto:vk779756@gmail.com" class="social-link" title="Email">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Quick Navigation Bar -->
+        <nav id="quick-nav">
+            <div class="nav-title">🗺️ Quick Travel</div>
+            <div class="nav-items" id="nav-items">
+                <!-- Populated by JS -->
+            </div>
+        </nav>
+
+        <!-- Zone Info Card (Always visible) -->
+        <div id="zone-card">
+            <div class="zone-card-header">
+                <span class="zone-card-icon" id="zone-card-icon">👋</span>
+                <div class="zone-card-info">
+                    <span class="zone-card-title" id="zone-card-title">Welcome</span>
+                    <span class="zone-card-subtitle" id="zone-card-subtitle">Start your journey here</span>
+                </div>
+            </div>
+            <div class="zone-card-preview" id="zone-card-preview">
+                <!-- Quick preview content -->
+            </div>
+            <button class="zone-card-btn" id="zone-card-btn">
+                <span>View Details</span>
+                <span class="btn-key">SPACE</span>
+            </button>
         </div>
-    </footer>
-    <script src="scripts.js"></script>
+
+        <!-- Controls Help -->
+        <div id="controls-help">
+            <div class="control-row">
+                <span class="key">W</span>
+            </div>
+            <div class="control-row">
+                <span class="key">A</span>
+                <span class="key">S</span>
+                <span class="key">D</span>
+            </div>
+            <p class="control-hint">Move around</p>
+        </div>
+
+        <!-- Section Panel -->
+        <div id="section-panel" class="hidden">
+            <button id="close-panel" class="close-btn">×</button>
+            <div id="panel-content">
+                <!-- Dynamic content goes here -->
+            </div>
+        </div>
+
+        <!-- Interaction Prompt -->
+        <div id="interaction-prompt" class="hidden">
+            <span class="prompt-key">SPACE</span>
+            <span class="prompt-text">to explore this zone</span>
+        </div>
+
+        <!-- Compass/Direction Indicator -->
+        <div id="compass">
+            <div class="compass-arrow" id="compass-arrow"></div>
+            <div class="compass-label" id="compass-label">Nearest: Experience</div>
+        </div>
+
+        <!-- Floating Island Labels -->
+        <div id="floating-labels"></div>
+    </div>
+
+    <!-- Mobile Controls -->
+    <div id="mobile-controls">
+        <div id="joystick-container">
+            <div id="joystick-base">
+                <div id="joystick-stick"></div>
+            </div>
+        </div>
+        <button id="mobile-interact-btn">EXPLORE</button>
+    </div>
+
+    <!-- Intro Modal (First time) -->
+    <div id="intro-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-icon">🚀</span>
+                <h2>Welcome to My World!</h2>
+            </div>
+            <p>Hi! I'm <strong>Vineet Kumar Gupta</strong>, a Gen-AI Engineer at Goldman Sachs.</p>
+            <p>Explore my 3D resume by walking around the floating islands. Each island tells a part of my story!</p>
+            <div class="modal-controls">
+                <div class="modal-control">
+                    <div class="keys-row"><span class="key small">W</span><span class="key small">A</span><span
+                            class="key small">S</span><span class="key small">D</span></div>
+                    <span>Move around</span>
+                </div>
+                <div class="modal-control">
+                    <span class="key small">SPACE</span>
+                    <span>View zone details</span>
+                </div>
+            </div>
+            <button id="start-btn" class="cta-btn">Let's Explore! 🎮</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="resumeData.js"></script>
+    <script src="main.js"></script>
 </body>
+
 </html>
